@@ -54,6 +54,18 @@ n == grid[i].length
 0 <= k <= 10
 */
 
+// Phân tích : 
+
+// không được tele thì sẽ tính theo cong thức
+
+// được tele thì lúc này cost đã thay đổi rồi 
+// => vòng for đầu tiên với t = 0 không có ý nghĩa gì, các cost vẫn bằng INT_MAX
+
+// do poinst ban đầu được sắp xếp theo điểm trên grid tăng dần lên mọi điểm ((i + 1).first,(i + 1).second) đều có thể tele đến các điểm poinst trước đó ( 0 -> i) 
+// Vì tính ngược từ [m][n] -> [0][0] lên cost thấp nhất sẽ là cost thấp nhất tại các điểm có grid bằng nhau
+// ví từ các grid có điểm bằng nhau chúng ta sẽ tele đến điểm grid đi đến m,n là thấp nhất 
+// nhận xét: tại sao không tele đến điểm grid nhỏ hơn ? => vì tính theo quy hoạch động tính ngược lên điểm grid nhỏ nhất được tính trước lên không cần làm như vậy
+
 #include <vector>
 #include <queue>
 #include <tuple>
@@ -110,3 +122,4 @@ public:
         return costs[0][0];
     }
 };
+
